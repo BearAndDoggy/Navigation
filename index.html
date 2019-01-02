@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>My Navigation</title>
+</head>
+<body>
+    <header></header>
+    <main id="mains">
+
+    </main>
+    <footer></footer>
+    <script>
+        keys = {
+            '0': {'0':'q','1':'w','2':'e','3':'r','4':'t','5':'y','6': 'u','7': 'i','8': 'o','9': 'p','length':'10'},
+            '1': {'0':'a','1':'s','2':'d','3':'f','4':'g','5':'h','6':'j','7':'k','8':'l','length':'9'},
+            '2': {'0':'z','1':'x','2':'c','3':'v','4':'b','5':'n','6':'m','length':'7'},
+            'length': 3,
+        }
+        
+        hash = {
+            'q': 'qq.com',
+            'w': 'weibo.com',
+            'e': 'ele.com',
+            'r': 'ruanyifeng.com',
+            'a': 'alibaba.com',
+            's': 'weibo.com',
+            'd': 'weibo.com',
+            'z': 'zhihu.com',
+            'x': 'weibo.com',
+            'c': 'weibo.com',
+            'v': 'V2ex.com',
+
+        }
+
+        var hash1 = JSON.parse(localStorage.getItem('xxx') || 'null')   
+        if (hash1) {
+            hash = hash1
+        }
+        var index = 0
+        while (index < keys['length']) {
+            var div = document.createElement('div')
+            var xx = mains.appendChild(div)
+            var index2 = 0  
+            while (index2 < keys[index]['length']) {
+                var kbd = document.createElement('kbd')
+                kbd.textContent = keys[index][index2]
+                div.appendChild(kbd)
+                var button = document.createElement('button')
+                button.textContent = 'E'
+                button.id = keys[index][index2]
+                kbd.appendChild(button)
+
+                button.onclick = function(event) {
+                var x = prompt('输入一个网址')
+                var cr = event.target.id
+                hash[cr] = x
+                localStorage.setItem('xxx', JSON.stringify(hash))
+                }
+                index2 = index2 + 1
+            }
+            index = index + 1
+        }
+
+        document.onkeypress = function(event) {
+            var key = event.key
+            var website = hash[key]
+            window.open('https://' + website, "_blank")
+        }
+
+
+
+
+    </script>
+</body>
+</html>
