@@ -21,16 +21,25 @@
           'w': 'weibo.com',
           'e': 'ele.com',
           'r': 'ruanyifeng.com',
+          't': 'taobao.com',
+          'i': 'iqiyi.com',
+          'k': 'www.kaixin001.com',
+          'j': 'jd.com',
+          'h': 'www.hexun.com',
+          'g': 'ganji.com',
           'a': 'alibaba.com',
-          's': 'weibo.com',
-          'd': 'weibo.com',
+          'm': 'meituan.com',
+          'd': 'douban.com',
           'z': 'zhihu.com',
-          'x': 'weibo.com',
-          'c': 'weibo.com',
+          'x': 'xunlei.com',
+          'c': 'cctv.com',
           'v': 'V2ex.com',
+          'b': 'baihe.com',
+          'f': 'ifeng.com',
+          'c': 'cnode.org',
       }
 
-      var hash1 = getLocalStorage('xxx')
+      var hash1 = getLocalStorage('url')
       if (hash1) {
           hash = hash1
       }
@@ -61,17 +70,17 @@
       button.id = textContent
 
       button.onclick = function(event) {
-          var x = prompt('输入一个网址')
+          var x = prompt('请输入一个网址,例如：www.baidu.com')
           var cr = event.target.id
           hash[cr] = x
-          localStorage.setItem('xxx', JSON.stringify(hash)) 
+          localStorage.setItem('url', JSON.stringify(hash)) 
 
           var button = event.target
           var img = button.nextSibling
           img.src = 'https://' + x + '/favicon.ico'
 
-          img.onerror = function(x) {
-          x.target.src = '//i.loli.net/2017/11/10/5a05afbc5e183.png'
+          img.onerror = function(event) {
+          event.target.src = '//i.loli.net/2017/11/10/5a05afbc5e183.png'
           }
           
       }
@@ -86,8 +95,8 @@
           img.src = 'https://i.loli.net/2017/11/10/5a05afbc5e183.png'
       }
 
-      img.onerror = function(x){
-      x.target.src = '//i.loli.net/2017/11/10/5a05afbc5e183.png'
+      img.onerror = function(e){
+      e.target.src = '//i.loli.net/2017/11/10/5a05afbc5e183.png'
       }
 
       return img
