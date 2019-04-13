@@ -36,7 +36,6 @@
           'v': 'V2ex.com',
           'b': 'baihe.com',
           'f': 'ifeng.com',
-          'c': 'cnode.org',
       }
 
       var hash1 = getLocalStorage('url')
@@ -70,17 +69,17 @@
       button.id = textContent
 
       button.onclick = function(event) {
-          var x = prompt('请输入一个网址,例如：www.baidu.com')
+          var x = prompt('请输入一个网址,如：baidu.com或者www.baidu.com')
           var cr = event.target.id
           hash[cr] = x
           localStorage.setItem('url', JSON.stringify(hash)) 
 
           var button = event.target
           var img = button.nextSibling
-          img.src = 'https://' + x + '/favicon.ico'
+          img.src = 'http://' + x + '/favicon.ico'
 
           img.onerror = function(event) {
-          event.target.src = '//i.loli.net/2017/11/10/5a05afbc5e183.png'
+          event.target.src = 'http://i.loli.net/2017/11/10/5a05afbc5e183.png'
           }
           
       }
@@ -90,13 +89,13 @@
   function createImage(domain) {
       var img = tag('img')
       if (domain) {
-          img.src = 'https://' + domain + '/favicon.ico' 
+          img.src = 'http://' + domain + '/favicon.ico' 
       } else {
-          img.src = 'https://i.loli.net/2017/11/10/5a05afbc5e183.png'
+          img.src = 'http://i.loli.net/2017/11/10/5a05afbc5e183.png'
       }
 
       img.onerror = function(e){
-      e.target.src = '//i.loli.net/2017/11/10/5a05afbc5e183.png'
+        e.target.src = 'http://i.loli.net/2017/11/10/5a05afbc5e183.png'
       }
 
       return img
@@ -129,6 +128,7 @@
       document.onkeypress = function(event) {
       var key = event.key
       var website = hash[key]
-      window.open('https://' + website, "_blank")
+      console.log(website);
+      window.open('http://' + website, "_blank")
       }
   }
